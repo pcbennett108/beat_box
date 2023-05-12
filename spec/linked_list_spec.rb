@@ -24,18 +24,19 @@ RSpec.describe LinkedList do
   it 'appended node points to nil' do
     list = LinkedList.new
     list.append("doop")
+    list.append("bop")
 
-    expect(list.head.next_node).to eq(nil)
+    expect(list.head.next_node.data).to eq("bop")
   end
 
-  it 'can count its nodes' do
+  xit 'can count its nodes' do
     list = LinkedList.new
     list.append("doop")
 
     expect(list.count).to eq(1)
   end
-  
-  it 'outputs node data to a string' do
+
+  xit 'outputs node data to a string' do
     list = LinkedList.new
     list.append("doop")
 

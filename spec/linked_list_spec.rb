@@ -29,11 +29,28 @@ RSpec.describe LinkedList do
     expect(list.head.next_node.data).to eq("bop")
   end
 
-  xit 'can count its nodes' do
+  it 'can count its nodes' do
     list = LinkedList.new
     list.append("doop")
 
     expect(list.count).to eq(1)
+  end
+
+  it 'can count when empty' do
+    list = LinkedList.new
+
+    expect(list.count).to eq(0)
+  end
+
+  it 'can count longer lists' do
+    list = LinkedList.new
+    
+    list.append("doop")
+    list.append("blip")
+    list.append("bop")
+    list.append("zop")
+
+    expect(list.count).to eq(4)
   end
 
   xit 'outputs node data to a string' do

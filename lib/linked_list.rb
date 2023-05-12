@@ -19,15 +19,25 @@ class LinkedList
     end
   end
 
-  # def count
-    
-  # end
+  def count
+    if (head == nil)
+      node_count = 0
+    else
+      last_node = head
+      node_count = 1
+      while (last_node.next_node != nil)
+        last_node = last_node.next_node
+        node_count += 1
+      end
+      node_count
+    end
+  end
 
 end
 
-p list = LinkedList.new
-list.append("doop")
-p list.append("bop")
-p list.append("bing")
+#p list = LinkedList.new
+#list.append("doop")
+#list.append("bop")
+#list.append("bing")
 
-p list
+#p list.count

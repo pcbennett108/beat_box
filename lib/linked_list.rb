@@ -33,8 +33,23 @@ class LinkedList
     end
   end
 
-end
+  def to_string
+    if (head == nil)
+      puts "Nothing to see here." #? use p or print instead?
+    else
+      output = ""
+      last_node = head
+      output += last_node.data
+      while (last_node.next_node != nil)
+        last_node = last_node.next_node
+        output << " " + last_node.data
+      end
+      output
+    end
+  end
 
+end
+require "pry" ; binding.pry
 #p list = LinkedList.new
 #list.append("doop")
 #list.append("bop")

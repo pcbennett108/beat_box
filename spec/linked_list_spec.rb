@@ -44,7 +44,7 @@ RSpec.describe LinkedList do
 
   it 'can count longer lists' do
     list = LinkedList.new
-    
+
     list.append("doop")
     list.append("blip")
     list.append("bop")
@@ -53,11 +53,21 @@ RSpec.describe LinkedList do
     expect(list.count).to eq(4)
   end
 
-  xit 'outputs node data to a string' do
+  it 'outputs node data to a string' do
     list = LinkedList.new
     list.append("doop")
 
     expect(list.to_string).to eq("doop")
+  end
+
+  it 'outputs multi node data to a string' do
+    list = LinkedList.new
+    list.append("doop")
+    list.append("blip")
+    list.append("bop")
+    list.append("zop")
+
+    expect(list.to_string).to eq("doop blip bop zop")
   end
 
 end

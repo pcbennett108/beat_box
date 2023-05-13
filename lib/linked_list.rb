@@ -35,24 +35,106 @@ class LinkedList
 
   def to_string
     if (head == nil)
-      puts "Nothing to see here." #? use p or print instead?
+      p "nil"
     else
-      output = ""
+      output = []
       last_node = head
-      output += last_node.data
+      output << last_node.data
       while (last_node.next_node != nil)
         last_node = last_node.next_node
-        output << " " + last_node.data
+        output << last_node.data
       end
-      output
+      output.join(' ')
     end
   end
 
-end
-require "pry" ; binding.pry
-#p list = LinkedList.new
-#list.append("doop")
-#list.append("bop")
-#list.append("bing")
+  def prepend(data)
+    if (head == nil)
+      @head = Node.new(data)
+    else
+      old_head = head
+      @head = Node.new(data)
+      head.next_node = old_head
+    end
+  end
 
-#p list.count
+  def insert(position, data)
+    if (head == nil)
+      @head = Node.new(data)
+    else
+      current_node = head
+      node_count = 1
+      while (node_count < position)
+        current_node = current_node.next_node
+        node_count += 1
+      end
+      new_node = Node.new(data)
+      new_node.next_node = current_node.next_node
+      current_node.next_node = new_node
+    end
+  end
+
+  def find(position, amt)
+    if (head == nil)
+      p "nil"
+    else
+      output = []
+      current_node = head
+      node_count = 0
+      while (node_count < position)
+        current_node = current_node.next_node
+        node_count += 1
+      end
+      amt.times do 
+      output << current_node.data
+      current_node = current_node.next_node
+      end
+    end
+    output.join(' ')
+  end
+
+  def includes?(beat)
+    if (head == nil)
+      puts "nil"
+    end
+    current_node = head
+    has_beat = false
+    has_beat = (current_node.data == beat)
+    while (current_node.next_node != nil)
+      if (current_node.data == beat)
+        has_beat = true
+      end
+      current_node = current_node.next_node
+    end
+    if (current_node.data == beat)
+      has_beat = true
+    end
+    has_beat
+  end
+
+  def pop
+    current_node = head
+    prev_node = nil
+    if (head.next_node == nil)
+      @head = nil
+      return
+    end
+    while (current_node.next_node != nil)
+      prev_node = current_node
+      current_node = current_node.next_node
+    end
+    prev_node.next_node = nil
+  end
+
+end
+
+#require "pry" ; binding.pry
+list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    list.pop
+    #list.pop

@@ -14,6 +14,8 @@ RSpec.describe LinkedList do
     expect(list.head).to eq(nil)
   end
 
+# ===== Tests for Append, Count and To_string =====
+
   it 'can append a node' do
     list = LinkedList.new
     list.append("doop")
@@ -68,6 +70,76 @@ RSpec.describe LinkedList do
     list.append("zop")
 
     expect(list.to_string).to eq("doop blip bop zop")
+  end
+
+# ===== Tests for Insert and Prepend  =====
+
+  it 'makes a new node the head' do
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+
+    expect(list.to_string).to eq("dop plop suu")
+  end
+
+  it 'can insert a node' do
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    list.insert(1, "woo")
+
+    expect(list.to_string).to eq("dop woo plop suu")
+  end
+
+  it 'can find a node and return it' do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    expect(list.find(2, 1)).to eq("shi")
+    expect(list.find(1, 3)).to eq("woo shi shu")
+  end
+
+  it 'check if node is included' do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    expect(list.includes?("deep")).to eq(true)
+    expect(list.includes?("woo")).to eq(true)
+    expect(list.includes?("dep")).to eq(false)
+    expect(list.includes?("blop")).to eq(true)
+  end
+
+  it 'can pop nodes off the tail' do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    list.pop
+    list.pop
+
+    expect(list.to_string).to eq("deep woo shi")
+  end
+
+  it 'can pop node with only head' do
+    list = LinkedList.new
+    list.append("deep")
+
+    list.pop
+
+    expect(list.to_string).to eq("nil")
   end
 
 end

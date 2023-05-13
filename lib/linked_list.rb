@@ -58,6 +58,23 @@ class LinkedList
     end
   end
 
+  def insert(position, data)
+    if (head == nil)
+      @head = Node.new(data)
+    else
+      current_node = head
+      node_count = 1
+      while (node_count < position)
+        current_node = current_node.next_node
+        node_count += 1
+      end
+      new_node = Node.new(data)
+      new_node.next_node = current_node.next_node
+      current_node.next_node = new_node
+
+    end
+  end
+
 end
 
 #require "pry" ; binding.pry

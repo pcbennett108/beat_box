@@ -14,6 +14,8 @@ RSpec.describe LinkedList do
     expect(list.head).to eq(nil)
   end
 
+# ===== Tests for Append, Count and To_string =====
+
   it 'can append a node' do
     list = LinkedList.new
     list.append("doop")
@@ -68,6 +70,17 @@ RSpec.describe LinkedList do
     list.append("zop")
 
     expect(list.to_string).to eq("doop blip bop zop")
+  end
+
+# ===== Tests for Insert and Prepend  =====
+
+  it 'makes a new node the head' do
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+
+    expect(list.to_string).to eq("dop plop suu")
   end
 
 end

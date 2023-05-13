@@ -48,8 +48,19 @@ class LinkedList
     end
   end
 
+  def prepend(data)
+    if (head == nil)
+      @head = Node.new(data)
+    else
+      old_head = head
+      @head = Node.new(data)
+      head.next_node = old_head
+    end
+  end
+
 end
-require "pry" ; binding.pry
+
+#require "pry" ; binding.pry
 #p list = LinkedList.new
 #list.append("doop")
 #list.append("bop")

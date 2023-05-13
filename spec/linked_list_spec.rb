@@ -107,17 +107,39 @@ RSpec.describe LinkedList do
 
   it 'check if node is included' do
     list = LinkedList.new
-    list.append("woo")
     list.append("deep")
+    list.append("woo")
     list.append("shi")
     list.append("shu")
     list.append("blop")
-    #list.append("zzz")
 
     expect(list.includes?("deep")).to eq(true)
     expect(list.includes?("woo")).to eq(true)
     expect(list.includes?("dep")).to eq(false)
     expect(list.includes?("blop")).to eq(true)
+  end
+
+  it 'can pop nodes off the tail' do
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    list.pop
+    list.pop
+
+    expect(list.to_string).to eq("deep woo shi")
+  end
+
+  it 'can pop node with only head' do
+    list = LinkedList.new
+    list.append("deep")
+
+    list.pop
+
+    expect(list.to_string).to eq("nil")
   end
 
 end

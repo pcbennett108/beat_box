@@ -35,7 +35,7 @@ class LinkedList
 
   def to_string
     if (head == nil)
-      puts "Nothing to see here." #? use p or print instead?
+      p "nil" #? use p or print instead?
     else
       output = []
       last_node = head
@@ -76,7 +76,7 @@ class LinkedList
 
   def find(position, amt)
     if (head == nil)
-      puts "Nothing to see here." #? use p or print instead?
+      puts "nil" #? use p or print instead?
     else
       output = []
       current_node = head
@@ -95,7 +95,7 @@ class LinkedList
 
   def includes?(beat)
     if (head == nil)
-      puts "Nothing to see here."
+      puts "nil"
     end
     current_node = head
     has_beat = false
@@ -112,15 +112,29 @@ class LinkedList
     has_beat
   end
 
+  def pop
+    current_node = head
+    prev_node = nil
+    if (head.next_node == nil)
+      @head = nil
+      return
+    end
+    while (current_node.next_node != nil)
+      prev_node = current_node
+      current_node = current_node.next_node
+    end
+    prev_node.next_node = nil
+  end
+
 end
 
 #require "pry" ; binding.pry
-# ll = LinkedList.new
-# ll.append("doop")
-# ll.append("bop")
-# ll.append("bing")
+list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
 
-# p ll.includes?("doop")
-# p ll.includes?("zoop")
-# p ll.includes?("bop")
-# p ll.includes?("bing")
+    list.pop
+    #list.pop

@@ -93,12 +93,34 @@ class LinkedList
     output.join(' ')
   end
 
+  def includes?(beat)
+    if (head == nil)
+      puts "Nothing to see here."
+    end
+    current_node = head
+    has_beat = false
+    has_beat = (current_node.data == beat)
+    while (current_node.next_node != nil)
+      if (current_node.data == beat)
+        has_beat = true
+      end
+      current_node = current_node.next_node
+    end
+    if (current_node.data == beat)
+      has_beat = true
+    end
+    has_beat
+  end
+
 end
 
 #require "pry" ; binding.pry
-#p list = LinkedList.new
-#list.append("doop")
-#list.append("bop")
-#list.append("bing")
+# ll = LinkedList.new
+# ll.append("doop")
+# ll.append("bop")
+# ll.append("bing")
 
-#p list.count
+# p ll.includes?("doop")
+# p ll.includes?("zoop")
+# p ll.includes?("bop")
+# p ll.includes?("bing")

@@ -93,7 +93,7 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("dop woo plop suu")
   end
 
-  it 'can find a node' do
+  it 'can find a node and return it' do
     list = LinkedList.new
     list.append("deep")
     list.append("woo")
@@ -101,9 +101,23 @@ RSpec.describe LinkedList do
     list.append("shu")
     list.append("blop")
 
-
     expect(list.find(2, 1)).to eq("shi")
     expect(list.find(1, 3)).to eq("woo shi shu")
+  end
+
+  it 'check if node is included' do
+    list = LinkedList.new
+    list.append("woo")
+    list.append("deep")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    #list.append("zzz")
+
+    expect(list.includes?("deep")).to eq(true)
+    expect(list.includes?("woo")).to eq(true)
+    expect(list.includes?("dep")).to eq(false)
+    expect(list.includes?("blop")).to eq(true)
   end
 
 end

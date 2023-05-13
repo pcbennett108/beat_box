@@ -35,7 +35,7 @@ class LinkedList
 
   def to_string
     if (head == nil)
-      p "nil" #? use p or print instead?
+      p "nil"
     else
       output = []
       last_node = head
@@ -76,7 +76,7 @@ class LinkedList
 
   def find(position, amt)
     if (head == nil)
-      puts "nil" #? use p or print instead?
+      p "nil"
     else
       output = []
       current_node = head

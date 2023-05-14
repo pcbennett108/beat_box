@@ -9,7 +9,7 @@ RSpec.describe BeatBox do
     expect(bb).to be_instance_of(BeatBox)
   end
 
-  xit 'can append multiple beats at once' do
+  it 'can append multiple beats at once' do
     bb = BeatBox.new
     bb.append("deep doo ditt")
 
@@ -17,12 +17,21 @@ RSpec.describe BeatBox do
     expect(bb.list.head.next_node.data).to eq("doo")
   end
 
-  xit 'combined appends create seperate beats' do
+  it 'combined appends create seperate beats' do
     bb = BeatBox.new
     bb.append("deep doo ditt")
     bb.append("woo hoo shu")
 
     expect(bb.count).to eq(6)
+  end
+
+  it 'extra spaces dont affect combined appends' do
+    bb = BeatBox.new
+    bb.append("deep doo  ditt")
+    bb.append("woo hoo shu ")
+    bb.append("zip   ")
+
+    expect(bb.count).to eq(7)
   end
 
 end

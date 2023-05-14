@@ -8,13 +8,14 @@ class BeatBox
   end
 
   def append(data)
-    list.append(data)
+    beat_list = data.split(' ')
+    beat_list.each { |beat| list.append(beat) }
   end
 
   def count
     list.count
   end
-  
-  require "pry" ; binding.pry
+
+  #require "pry" ; binding.pry
 end
 

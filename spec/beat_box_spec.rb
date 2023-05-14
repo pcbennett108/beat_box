@@ -27,7 +27,7 @@ RSpec.describe BeatBox do
 
   it 'extra spaces dont affect combined appends' do
     bb = BeatBox.new
-    bb.append("deep doo  ditt")
+    bb.append("  deep doo  ditt")
     bb.append("woo hoo shu ")
     bb.append("zip   ")
 

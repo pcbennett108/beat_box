@@ -133,7 +133,7 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("deep woo shi")
   end
 
-  it 'can pop node with only head' do
+  it 'can pop node with only a head' do
     list = LinkedList.new
     list.append("deep")
 

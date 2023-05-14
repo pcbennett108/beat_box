@@ -5,4 +5,6 @@ class Node
     @data = data
     @next_node = next_node
   end
+
 end
+#todo = make next_node & data handle a nil head

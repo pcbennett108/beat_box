@@ -9,15 +9,20 @@ RSpec.describe BeatBox do
     expect(bb).to be_instance_of(BeatBox)
   end
 
-  xit 'has data' do
+  xit 'can append multiple beats at once' do
     bb = BeatBox.new
+    bb.append("deep doo ditt")
 
-    expect(node.data).to eq("plop")
+    expect(bb.list.head.data).to eq("deep")
+    expect(bb.list.head.next_node.data).to eq("doo")
   end
 
-  xit 'has a nil next node' do
+  xit 'combined appends create seperate beats' do
     bb = BeatBox.new
-    expect(node.next_node).to eq(nil)
+    bb.append("deep doo ditt")
+    bb.append("woo hoo shu")
+
+    expect(bb.count).to eq(6)
   end
 
 end

@@ -34,6 +34,7 @@ class LinkedList
   end
 
   def to_string
+    #? works when head is nil ?
     if (head == nil)
       p "nil"
     else
@@ -59,6 +60,7 @@ class LinkedList
   end
 
   def insert(position, data)
+    #todo = error ~undef method next_node for nil when position higher than list length
     if (head == nil)
       @head = Node.new(data)
     else
@@ -75,6 +77,7 @@ class LinkedList
   end
 
   def find(position, amt)
+    #todo = error ~undef method next_node for nil when finding position higher than length
     if (head == nil)
       p "nil"
     else
@@ -113,6 +116,8 @@ class LinkedList
   end
 
   def pop
+    #todo = error ~undef method next_node for nil when pop called on nil-head
+    #? pop returns nil whan ran
     current_node = head
     prev_node = nil
     if (head.next_node == nil)
@@ -128,7 +133,7 @@ class LinkedList
 
 end
 
-#require "pry" ; binding.pry
+require "pry" ; binding.pry
 # list = LinkedList.new
 #     list.append("deep")
 #     list.append("woo")
@@ -137,4 +142,4 @@ end
 #     list.append("blop")
 
 #     list.pop
-    #list.pop
+#     list.pop

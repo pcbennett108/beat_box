@@ -60,9 +60,14 @@ class LinkedList
   end
 
   def insert(position, data)
-    #todo = error ~undef method next_node for nil when position higher than list length
     if (head == nil)
       @head = Node.new(data)
+    elsif (position > self.count)
+      return
+    elsif (position <= 0)
+      old_head = head
+      @head = Node.new(data)
+      head.next_node = old_head
     else
       current_node = head
       node_count = 1
@@ -135,12 +140,12 @@ class LinkedList
 
 end
 
-# list = LinkedList.new
-#   list.append("deep")
-#     list.append("woo")
-#     list.append("shi")
-#     list.append("shu")
-#     list.append("blop")
+list = LinkedList.new
+  list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
 
 #     list.pop
 #     list.pop

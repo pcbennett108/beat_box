@@ -93,6 +93,38 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("dop woo plop suu")
   end
 
+  it 'can insert a node to the end' do
+    list = LinkedList.new
+    list.append("bop")
+    list.append("zap")
+    list.append("pish")
+    list.insert(3, "woo")
+
+    expect(list.to_string).to eq("bop zap pish woo")
+  end
+
+  it 'can insert a node to the head' do
+    list = LinkedList.new
+    list.append("bop")
+    list.append("zap")
+    list.append("pish")
+    list.insert(0, "woo")
+
+    expect(list.to_string).to eq("woo bop zap pish")
+  end
+
+  it 'can handle insert with over large position number' do
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.append("dop")
+    list.insert(22, "waaat")
+
+    expect(list.to_string).to eq("plop suu dop")
+  end
+
+# ===== Tests for Find, Includes and Pop  =====
+
   it 'can find a node and return it' do
     list = LinkedList.new
     list.append("deep")

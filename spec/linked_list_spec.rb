@@ -133,13 +133,23 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("deep woo shi")
   end
 
+  it 'will call pop on empty head without error' do
+    list = LinkedList.new
+    list.append("deep")
+
+    list.pop
+    list.pop
+
+    expect(list.count).to eq(0)
+  end
+
   it 'can pop node with only a head' do
     list = LinkedList.new
     list.append("deep")
 
     list.pop
 
-    expect(list.to_string).to eq("nil")
+    expect(list.to_string).to eq(nil)
   end
 
 end

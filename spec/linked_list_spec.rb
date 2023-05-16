@@ -93,6 +93,38 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("dop woo plop suu")
   end
 
+  it 'can insert a node to the end' do
+    list = LinkedList.new
+    list.append("bop")
+    list.append("zap")
+    list.append("pish")
+    list.insert(3, "woo")
+
+    expect(list.to_string).to eq("bop zap pish woo")
+  end
+
+  it 'can insert a node to the head' do
+    list = LinkedList.new
+    list.append("bop")
+    list.append("zap")
+    list.append("pish")
+    list.insert(0, "woo")
+
+    expect(list.to_string).to eq("woo bop zap pish")
+  end
+
+  it 'can handle insert with over-large position number' do
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.append("dop")
+    list.insert(22, "waaat")
+
+    expect(list.to_string).to eq("plop suu dop")
+  end
+
+# ===== Tests for Find, Includes and Pop  =====
+
   it 'can find a node and return it' do
     list = LinkedList.new
     list.append("deep")
@@ -103,9 +135,25 @@ RSpec.describe LinkedList do
 
     expect(list.find(2, 1)).to eq("shi")
     expect(list.find(1, 3)).to eq("woo shi shu")
+    expect(list.find(0, 5)).to eq("deep woo shi shu blop")
+    expect(list.find(4, 1)).to eq("blop")
   end
 
-  it 'check if node is included' do
+  it 'can handle find with out-of-range arguments' do
+    list = LinkedList.new
+    list.append("bonk")
+    list.append("blip")
+    list.append("zip")
+    list.append("biff")
+    list.append("bap")
+
+    expect(list.find(7, 1)).to eq(nil)
+    expect(list.find(2, 13)).to eq(nil)
+    expect(list.find(9, 23)).to eq(nil)
+    expect(list.find(0, 6)).to eq(nil)
+  end
+
+  it 'checks if node is included' do
     list = LinkedList.new
     list.append("deep")
     list.append("woo")
@@ -133,13 +181,23 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("deep woo shi")
   end
 
+  it 'will call pop on empty head without error' do
+    list = LinkedList.new
+    list.append("deep")
+
+    list.pop
+    list.pop
+
+    expect(list.count).to eq(0)
+  end
+
   it 'can pop node with only a head' do
     list = LinkedList.new
     list.append("deep")
 
     list.pop
 
-    expect(list.to_string).to eq("nil")
+    expect(list.to_string).to eq(nil)
   end
 
 end

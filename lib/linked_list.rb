@@ -34,9 +34,8 @@ class LinkedList
   end
 
   def to_string
-    #? works when head is nil ?
     if (head == nil)
-      p "nil"
+      return
     else
       output = []
       last_node = head
@@ -60,9 +59,14 @@ class LinkedList
   end
 
   def insert(position, data)
-    #todo = error ~undef method next_node for nil when position higher than list length
     if (head == nil)
       @head = Node.new(data)
+    elsif (position > self.count)
+      return
+    elsif (position <= 0)
+      old_head = head
+      @head = Node.new(data)
+      head.next_node = old_head
     else
       current_node = head
       node_count = 1
@@ -76,10 +80,12 @@ class LinkedList
     end
   end
 
-  def find(position, amt)
-    #todo = error ~undef method next_node for nil when finding position higher than length
+  def find(position, number_of_beats)
     if (head == nil)
-      p "nil"
+      return
+    elsif (position >= self.count) ||
+          (self.count - position < number_of_beats)
+      return
     else
       output = []
       current_node = head
@@ -88,7 +94,7 @@ class LinkedList
         current_node = current_node.next_node
         node_count += 1
       end
-      amt.times do 
+      number_of_beats.times do 
       output << current_node.data
       current_node = current_node.next_node
       end
@@ -98,7 +104,7 @@ class LinkedList
 
   def includes?(beat)
     if (head == nil)
-      puts "nil"
+      return
     end
     current_node = head
     has_beat = false
@@ -116,14 +122,16 @@ class LinkedList
   end
 
   def pop
-    #todo = error ~undef method next_node for nil when pop called on nil-head
-    #? pop returns nil whan ran
+    #? pop returns nil when called
     current_node = head
     prev_node = nil
-    if (head.next_node == nil)
+    if (head == nil)
+      return
+    elsif (head.next_node == nil)
       @head = nil
       return
     end
+
     while (current_node.next_node != nil)
       prev_node = current_node
       current_node = current_node.next_node
@@ -133,13 +141,13 @@ class LinkedList
 
 end
 
-require "pry" ; binding.pry
-# list = LinkedList.new
-#     list.append("deep")
-#     list.append("woo")
-#     list.append("shi")
-#     list.append("shu")
-#     list.append("blop")
+list = LinkedList.new
+  list.append("deep")
+  list.append("woo")
+  list.append("shi")
+  list.append("shu")
+  list.append("blop")
 
 #     list.pop
 #     list.pop
+#require "pry" ; binding.pry

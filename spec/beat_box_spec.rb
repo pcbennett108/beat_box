@@ -34,4 +34,12 @@ RSpec.describe BeatBox do
     expect(bb.count).to eq(7)
   end
 
+  it 'prints list with method called all' do
+    bb = BeatBox.new
+    bb.append("deep doo ditt")
+    bb.append("woo hoo shu")
+
+    expect(bb.all).to eq("deep doo ditt woo hoo shu")
+  end
+
 end

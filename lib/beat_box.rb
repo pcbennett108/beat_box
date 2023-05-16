@@ -16,24 +16,22 @@ class BeatBox
     list.count
   end
 
+  def all
+    list.to_string
+  end
+
   def play
     p "Playing: #{list.to_string}"
     `say -r 130 -v Rocko #{list.to_string}` 
   end
 
-  #require "pry" ; binding.pry
+  
 end
 
-# bb = BeatBox.new
-# bb.append("boop boop boop boop")
-# bb.play
-# bb.append("ooonce pit oonce pit oonce pit oonce pit")
-# bb.play
-# bb.list.pop
-# bb.list.pop
-# bb.list.pop
-# bb.list.pop
-# bb.play
+bb = BeatBox.new
+bb.append("boop zop bonk boop")
 
-# p bb.count
-# bb.play
+
+p bb.count
+#bb.play
+#require "pry" ; binding.pry

@@ -2,18 +2,36 @@ require './lib/node'
 require './lib/linked_list'
 
 class BeatBox
-  attr_reader :list
+  attr_reader :list, :valid_beats
   def initialize
     @list = LinkedList.new
+    @valid_beats = [
+      "unce", "deep", "bop", "bap", 
+      "tiss", "bomp", "na", "la", 
+      "ifft", "doo", "ditt"
+    ]
+  end
+
+  def validate_beats(beats)
+    beats.split(' ').filter { |beat| valid_beats.include?(beat) }
   end
 
   def append(data)
-    beat_list = data.split(' ')
+    beat_list = validate_beats(data)
     beat_list.each { |beat| list.append(beat) }
+  end
+
+  def prepend(data)
+    beat_list = validate_beats(data)
+    beat_list.each { |beat| list.prepend(beat) }
   end
 
   def count
     list.count
+  end
+
+  def all
+    list.to_string
   end
 
   def play
@@ -21,19 +39,14 @@ class BeatBox
     `say -r 130 -v Rocko #{list.to_string}` 
   end
 
-  #require "pry" ; binding.pry
+  
 end
 
 # bb = BeatBox.new
-# bb.append("boop boop boop boop")
-# bb.play
-# bb.append("ooonce pit oonce pit oonce pit oonce pit")
-# bb.play
-# bb.list.pop
-# bb.list.pop
-# bb.list.pop
-# bb.list.pop
-# bb.play
+# #bb.prepend("bomp bop bonk tiss")
+# p bb.valid_beats
 
-# p bb.count
-# bb.play
+# p bb.prepend("bap deep bop zop bop sunday bla bla na")
+# p bb.all
+#bb.play
+#require "pry" ; binding.pry

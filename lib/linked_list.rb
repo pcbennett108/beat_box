@@ -34,7 +34,6 @@ class LinkedList
   end
 
   def to_string
-    #? works when head is nil ?
     if (head == nil)
       return
     else
@@ -81,9 +80,11 @@ class LinkedList
     end
   end
 
-  def find(position, amt)
-    #todo = error ~undef method next_node for nil when finding position higher than length
+  def find(position, number_of_beats)
     if (head == nil)
+      return
+    elsif (position >= self.count) ||
+          (self.count - position < number_of_beats)
       return
     else
       output = []
@@ -93,7 +94,7 @@ class LinkedList
         current_node = current_node.next_node
         node_count += 1
       end
-      amt.times do 
+      number_of_beats.times do 
       output << current_node.data
       current_node = current_node.next_node
       end
@@ -142,10 +143,10 @@ end
 
 list = LinkedList.new
   list.append("deep")
-    list.append("woo")
-    list.append("shi")
-    list.append("shu")
-    list.append("blop")
+  list.append("woo")
+  list.append("shi")
+  list.append("shu")
+  list.append("blop")
 
 #     list.pop
 #     list.pop

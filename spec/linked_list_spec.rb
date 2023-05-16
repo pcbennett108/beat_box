@@ -113,7 +113,7 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("woo bop zap pish")
   end
 
-  it 'can handle insert with over large position number' do
+  it 'can handle insert with over-large position number' do
     list = LinkedList.new
     list.append("plop")
     list.append("suu")
@@ -135,9 +135,25 @@ RSpec.describe LinkedList do
 
     expect(list.find(2, 1)).to eq("shi")
     expect(list.find(1, 3)).to eq("woo shi shu")
+    expect(list.find(0, 5)).to eq("deep woo shi shu blop")
+    expect(list.find(4, 1)).to eq("blop")
   end
 
-  it 'check if node is included' do
+  it 'can handle find with out-of-range arguments' do
+    list = LinkedList.new
+    list.append("bonk")
+    list.append("blip")
+    list.append("zip")
+    list.append("biff")
+    list.append("bap")
+
+    expect(list.find(7, 1)).to eq(nil)
+    expect(list.find(2, 13)).to eq(nil)
+    expect(list.find(9, 23)).to eq(nil)
+    expect(list.find(0, 6)).to eq(nil)
+  end
+
+  it 'checks if node is included' do
     list = LinkedList.new
     list.append("deep")
     list.append("woo")

@@ -11,11 +11,11 @@ class LinkedList
     if (head == nil)
       @head = Node.new(data)
     else
-      last_node = head
-      while (last_node.next_node != nil)
-        last_node = last_node.next_node
+      current_node = head
+      while (current_node.next_node != nil)
+        current_node = current_node.next_node
       end
-      last_node.next_node = Node.new(data)
+      current_node.next_node = Node.new(data)
     end
   end
 
@@ -23,10 +23,10 @@ class LinkedList
     if (head == nil)
       node_count = 0
     else
-      last_node = head
-      node_count = 1
-      while (last_node.next_node != nil)
-        last_node = last_node.next_node
+      current_node = head
+      node_count = 0
+      while (current_node != nil)
+        current_node = current_node.next_node
         node_count += 1
       end
       node_count
@@ -38,11 +38,10 @@ class LinkedList
       return
     else
       output = []
-      last_node = head
-      output << last_node.data
-      while (last_node.next_node != nil)
-        last_node = last_node.next_node
-        output << last_node.data
+      current_node = head
+      while (current_node != nil)
+        output << current_node.data
+        current_node = current_node.next_node
       end
       output.join(' ')
     end
@@ -104,19 +103,15 @@ class LinkedList
 
   def includes?(beat)
     if (head == nil)
-      return
+      return false
     end
     current_node = head
     has_beat = false
-    has_beat = (current_node.data == beat)
-    while (current_node.next_node != nil)
+    while (current_node != nil)
       if (current_node.data == beat)
         has_beat = true
       end
       current_node = current_node.next_node
-    end
-    if (current_node.data == beat)
-      has_beat = true
     end
     has_beat
   end
@@ -140,14 +135,3 @@ class LinkedList
   end
 
 end
-
-list = LinkedList.new
-  list.append("deep")
-  list.append("woo")
-  list.append("shi")
-  list.append("shu")
-  list.append("blop")
-
-#     list.pop
-#     list.pop
-#require "pry" ; binding.pry

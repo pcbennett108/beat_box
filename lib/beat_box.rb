@@ -62,6 +62,5 @@ end
 
 
 # bb = BeatBox.new
-
 # bb.append("bomp tiss bomp tiss bap bop bop bap ifft ifft ifft ifft")
-# require "pry" ; binding.pry
+#require "pry" ; binding.pry

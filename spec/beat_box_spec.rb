@@ -74,4 +74,40 @@ RSpec.describe BeatBox do
     expect(bb.all).to eq("unce tiss na na deep")
   end
 
+  it 'can play a default beat' do
+    bb = BeatBox.new
+    bb.append("deep doo ditt")
+    bb.prepend("ifft unce doo")
+
+    expect(bb.play).to eq(6)
+    expect(bb.all).to eq("doo unce ifft deep doo ditt")
+    expect(bb.rate).to eq(500)
+    expect(bb.voice).to eq("Boing")
+  end
+
+  it 'can play a custom beat' do
+    bb = BeatBox.new
+    bb.append("deep doo ditt")
+    bb.prepend("ifft unce doo")
+    bb.rate = 140
+    bb.voice = "Daniel"
+
+    expect(bb.all).to eq("doo unce ifft deep doo ditt")
+    expect(bb.rate).to eq(140)
+    expect(bb.voice).to eq("Daniel")
+    expect(bb.play).to eq(6)
+  end
+
+  it 'can play a default beat' do
+    bb = BeatBox.new
+    bb.append("bomp pish bomp pish bomp pish")
+    bb.reset_rate
+    bb.reset_voice
+
+    expect(bb.play).to eq(6)
+    expect(bb.all).to eq("bomp pish bomp pish bomp pish")
+    expect(bb.rate).to eq(500)
+    expect(bb.voice).to eq("Boing")
+  end
+
 end

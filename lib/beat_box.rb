@@ -11,7 +11,7 @@ class BeatBox
     @valid_beats = [
       "unce", "deep", "bop", "bap", 
       "tiss", "bomp", "na", "la", 
-      "ifft", "doo", "ditt"
+      "ifft", "doo", "ditt", "pish"
     ]
   end
 
@@ -47,7 +47,8 @@ class BeatBox
 
   def play
     p "Playing: #{list.to_string}"
-    `say -r #{rate} -v #{voice} #{list.to_string}` 
+    `say -r #{rate} -v #{voice} #{list.to_string}`
+    self.count
   end
 
 end
@@ -62,5 +63,5 @@ end
 
 # bb = BeatBox.new
 
-# bb.append("unce unce unce unce bomp tiss bomp tiss bap bop bop bap ifft ifft ifft ifft")
+# bb.append("bomp tiss bomp tiss bap bop bop bap ifft ifft ifft ifft")
 # require "pry" ; binding.pry

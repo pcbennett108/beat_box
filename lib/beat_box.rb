@@ -47,8 +47,10 @@ class BeatBox
 
   def play
     p "Playing: #{list.to_string}"
+    # I like to see what is being played
     `say -r #{rate} -v #{voice} #{list.to_string}`
-    self.count
+    self.count 
+    #Interaction guide shows length return on playback
   end
 
 end
